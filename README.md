@@ -1,32 +1,41 @@
-# React + TypeScript + Vite
+# Frontend - Proyecto Final SW2
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend de la aplicación, construido con React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 18
+- TypeScript
+- Vite
+- React Router
+- Axios
+- React Hook Form + Zod
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 18 o superior
+- npm
 
-## Expanding the Oxlint configuration
+## Cómo ejecutar el proyecto
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+1. Clonar el repositorio:
+   ```bash
+   git clone <URL_DEL_REPO>
+   cd sw2ProyectoFinal
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+2. Instalar dependencias:
+npm install
+3. Correr en modo desarrollo:
+npm run dev
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+##Estructura del proyecto
+src/
+├── api/          # Configuración de axios y llamadas HTTP
+├── components/   # Componentes reutilizables
+├── context/      # Contextos (Auth)
+├── hooks/        # Hooks personalizados
+├── pages/        # Páginas (Login, Register, etc.)
+├── types/        # Tipos TypeScript compartidos
+├── App.tsx       # Componente raíz con rutas
+└── main.tsx      # Punto de entrada
