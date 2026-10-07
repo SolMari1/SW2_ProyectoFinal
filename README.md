@@ -1,5 +1,5 @@
-# Frontend - Proyecto Final SW2
-
+#Proyecto Final SW2
+# Frontend 
 Frontend de la aplicación, construido con React + TypeScript + Vite.
 
 ## Tecnologías
