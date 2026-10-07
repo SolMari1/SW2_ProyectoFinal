@@ -30,6 +30,7 @@ npm run dev
 
 
 ##Estructura del proyecto
+
 src/
 ├── api/          # Configuración de axios y llamadas HTTP
 ├── components/   # Componentes reutilizables
