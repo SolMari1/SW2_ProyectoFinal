@@ -1,6 +1,5 @@
-// src/data/mockProducts.ts
-// Catálogo de prendas de vestir unisex (Camisas, Pantalones y Buzos en tallas S, M, L, XL)
-// Sin calificaciones, sin descuentos ni etiquetas promocionales
+
+// Catálogo de prendas de vestir 
 import type { Product, TallaRopa } from '../types/product';
 
 // Tallas universales disponibles en todo el catálogo

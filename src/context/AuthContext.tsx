@@ -1,4 +1,3 @@
-// src/context/AuthContext.tsx
 // Contexto de autenticación adaptado para usuarios de prueba predefinidos y backend
 import { createContext, useState, useEffect, type ReactNode, type FC } from 'react';
 import type { User, AuthResponse } from '../types/auth';
@@ -41,7 +40,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   const login = async (data: { email: string; password?: string }) => {
-    // 1. Verificamos si coincide con uno de nuestros usuarios de prueba
+    //  Verificamos si coincide con uno de nuestros usuarios de prueba
     const usuarioPrueba = TEST_USERS.find(
       (u) => u.user.email.toLowerCase() === data.email.toLowerCase()
     );
@@ -55,7 +54,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       return;
     }
 
-    // 2. Si no es usuario predefinido de prueba, creamos una sesión por defecto como cliente
+    // Si no es usuario predefinido de prueba, creamos una sesión por defecto como cliente
     const defaultUser: User = {
       id: `user-${Date.now()}`,
       name: data.email.split('@')[0],

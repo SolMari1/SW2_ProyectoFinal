@@ -1,4 +1,3 @@
-// src/pages/Cart.tsx
 // Vista del carrito de compras: solo accesible para clientes, con botón de Pagar simulado y placeholder backend
 import { useState, type FC } from 'react';
 import { useAuth } from '../hooks/useAuth';

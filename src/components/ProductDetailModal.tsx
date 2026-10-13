@@ -1,6 +1,4 @@
-// src/components/ProductDetailModal.tsx
-// Modal de detalles de producto con flujo estricto: primero talla, luego selector de cantidad
-// Sin calificaciones, sin descuentos ni etiquetas promocionales
+// Detalles de producto, primero talla, luego seleccionar la cantidad
 import { useState, useEffect, type FC } from 'react';
 import type { Product, TallaRopa } from '../types/product';
 import { useAuth } from '../hooks/useAuth';
@@ -30,7 +28,7 @@ export const ProductDetailModal: FC<ProductDetailModalProps> = ({
   const { agregarAlCarrito } = useCart();
   const esAdmin = user?.role === 'admin';
 
-  // Flujo estricto: primero seleccionar talla, luego se habilita la cantidad
+  // primero seleccionar talla, luego se habilita la cantidad
   const [tallaSeleccionada, setTallaSeleccionada] = useState<TallaRopa | null>(null);
   const [cantidad, setCantidad] = useState<number>(1);
   const [mensajeError, setMensajeError] = useState<string>('');
@@ -42,7 +40,7 @@ export const ProductDetailModal: FC<ProductDetailModalProps> = ({
     setMensajeError('');
   }, [product]);
 
-  // Manejo de la tecla Escape para cerrar el modal de forma accesible
+  // Manejo de la tecla Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -122,7 +120,7 @@ export const ProductDetailModal: FC<ProductDetailModalProps> = ({
 
             <h2 className="modal-titulo">{product.nombre}</h2>
 
-            {/* Precio único (sin descuentos) */}
+            {/* Precio único  */}
             <div className="modal-precios">
               <span className="modal-precio-actual">
                 {formatearMoneda(product.precio)}
@@ -189,9 +187,8 @@ export const ProductDetailModal: FC<ProductDetailModalProps> = ({
 
                 {/* PASO 2: Selector de cantidad (Solo habilitado tras seleccionar la talla) */}
                 <div
-                  className={`modal-selector-cantidad ${
-                    !tallaSeleccionada ? 'modal-selector-cantidad--deshabilitado' : ''
-                  }`}
+                  className={`modal-selector-cantidad ${!tallaSeleccionada ? 'modal-selector-cantidad--deshabilitado' : ''
+                    }`}
                 >
                   <label className="modal-selector-cantidad__titulo">
                     Paso 2: Cantidad:

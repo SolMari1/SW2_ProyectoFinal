@@ -1,117 +1,81 @@
-// src/components/Navbar.tsx
-// Barra de navegación adaptada a roles: Cliente (Catálogo, Mis Pedidos, Carrito) y Admin (Catálogo, Informes Admin)
+
+// Barra de navegación superior para el catálogo 
 import type { FC } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import { useCart } from '../context/CartContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
-  terminoBusqueda?: string;
-  onCambioBusqueda?: (valor: string) => void;
-  mostrarBuscador?: boolean;
+  terminoBusqueda: string;
+  onCambioBusqueda: (valor: string) => void;
+  // NOTA: Conteo del carrito y apertura comentados por ahora
+  // cantidadCarrito?: number;
+  // onAbrirCarrito?: () => void;
 }
 
 export const Navbar: FC<NavbarProps> = ({
-  terminoBusqueda = '',
-  onCambioBusqueda,
-  mostrarBuscador = true
+  terminoBusqueda,
+  onCambioBusqueda
 }) => {
+  // Obtenemos el estado de autenticación y datos del usuario del contexto
   const { user, logout, isAuthenticated } = useAuth();
-  const { totalArticulos } = useCart();
-  const navigate = useNavigate();
-
-  const esAdmin = user?.role === 'admin';
-  const esCliente = user?.role === 'cliente';
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
 
   return (
     <header className="navbar-catalogo">
       <div className="navbar-catalogo__contenedor">
-        {/* Título de la tienda */}
+        {/* Título de la marca / aplicación en texto limpio  */}
         <Link to="/" className="navbar-catalogo__marca">
-          <span className="navbar-catalogo__titulo">Tienda de Ropa</span>
-          <span className="navbar-catalogo__subtitulo">Dropshipping</span>
+          <span className="navbar-catalogo__titulo">Tienda Virtual</span>
+          <span className="navbar-catalogo__subtitulo">Catálogo</span>
         </Link>
 
-        {/* Buscador (opcional en páginas donde aplique) */}
-        {mostrarBuscador && onCambioBusqueda && (
-          <div className="navbar-catalogo__buscador">
-            <input
-              type="text"
-              placeholder="Buscar camisas, pantalones, buzos..."
-              value={terminoBusqueda}
-              onChange={(e) => onCambioBusqueda(e.target.value)}
-              aria-label="Buscar prendas"
-            />
-            {terminoBusqueda && (
-              <button
-                type="button"
-                className="navbar-catalogo__btn-limpiar"
-                onClick={() => onCambioBusqueda('')}
-                title="Borrar búsqueda"
-              >
-                ✕
-              </button>
-            )}
-          </div>
-        )}
+        {/* Barra de búsqueda integrada en la cabecera */}
+        <div className="navbar-catalogo__buscador">
+          <input
+            type="text"
+            placeholder="Buscar por nombre, descripción o categoría..."
+            value={terminoBusqueda}
+            onChange={(e) => onCambioBusqueda(e.target.value)}
+            aria-label="Buscar productos"
+          />
+          {terminoBusqueda && (
+            <button
+              type="button"
+              className="navbar-catalogo__btn-limpiar"
+              onClick={() => onCambioBusqueda('')}
+              title="Borrar búsqueda"
+            >
+              ✕
+            </button>
+          )}
+        </div>
 
-        {/* Navegación y acciones por rol */}
+        {/* Sección de acciones y perfil de usuario */}
         <div className="navbar-catalogo__acciones">
-          {/* Enlace al Catálogo */}
-          <Link to="/" className="nav-enlace">
-            Catálogo
-          </Link>
+          {/* NOTA: Botón de carrito de compras comentado según requerimiento
+          <button
+            type="button"
+            className="navbar-catalogo__btn-carrito"
+            onClick={onAbrirCarrito}
+          >
+            Carrito ({cantidadCarrito})
+          </button>
+          */}
 
-          {/* Menú para Administradores: Acceso directo a los Informes */}
-          {isAuthenticated && esAdmin && (
-            <Link to="/admin/informes" className="nav-enlace nav-enlace--admin">
-              Informes Admin
-            </Link>
-          )}
-
-          {/* Menú para Clientes: Acceso a "Mis Pedidos" y Carrito de Compras */}
-          {isAuthenticated && esCliente && (
-            <>
-              <Link to="/mis-pedidos" className="nav-enlace">
-                Mis Pedidos
-              </Link>
-              <Link to="/carrito" className="nav-enlace nav-enlace--carrito">
-                Carrito ({totalArticulos})
-              </Link>
-            </>
-          )}
-
-          {/* Si no está autenticado, puede ver carrito si lo desea o loguearse */}
-          {!isAuthenticated && (
-            <Link to="/carrito" className="nav-enlace nav-enlace--carrito">
-              Carrito ({totalArticulos})
-            </Link>
-          )}
-
-          {/* Estado del usuario y Cerrar Sesión */}
+          {/* Si el usuario ha iniciado sesión, mostramos su nombre y opción de salir */}
           {isAuthenticated ? (
             <div className="navbar-catalogo__usuario">
-              <div className="usuario-badge-contenedor">
-                <span className="usuario-nombre">{user?.name}</span>
-                <span className={`usuario-rol-badge rol-${user?.role}`}>
-                  {user?.role === 'admin' ? 'Admin' : 'Cliente'}
-                </span>
-              </div>
+              <span className="usuario-nombre">{user?.name || user?.email || 'Usuario'}</span>
               <button
                 type="button"
                 className="btn-cerrar-sesion"
-                onClick={handleLogout}
+                onClick={logout}
                 title="Cerrar sesión actual"
               >
                 Salir
               </button>
             </div>
           ) : (
+            // Si no está autenticado, enlaces directos a Login y Registro
             <div className="navbar-catalogo__auth-links">
               <Link to="/login" className="link-login">
                 Iniciar Sesión

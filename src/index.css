@@ -85,7 +85,7 @@ button:disabled {
 }
 
 span {
-  color: red;
+  color: rgb(24, 19, 19);
   font-size: 0.875rem;
   display: block;
   margin-top: 0.25rem;

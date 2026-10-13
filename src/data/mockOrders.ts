@@ -1,11 +1,9 @@
-// src/data/mockOrders.ts
+
 // Historial de pedidos iniciales para pruebas (Mínimo 6 pedidos diferentes para Cliente 1 y Cliente 2)
 import type { Order } from '../types/order';
 
 export const INITIAL_ORDERS: Order[] = [
-  // ==========================================
-  // PEDIDOS DE CLIENTE 1 (Carlos Mendoza) - 6 pedidos
-  // ==========================================
+  // CLIENTE 1
   {
     id: 'PED-1001',
     clienteId: 'cliente-1',
@@ -154,9 +152,7 @@ export const INITIAL_ORDERS: Order[] = [
     estado: 'En proceso'
   },
 
-  // ==========================================
-  // PEDIDOS DE CLIENTE 2 (Andrea Gómez) - 6 pedidos diferentes
-  // ==========================================
+  // CLIENTE 2
   {
     id: 'PED-2001',
     clienteId: 'cliente-2',
