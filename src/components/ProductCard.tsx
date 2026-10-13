@@ -31,6 +31,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product, onVerDetalles }) =>
           alt={product.nombre}
           className="card-producto__imagen"
           loading="lazy"
+
         />
       </div>
 

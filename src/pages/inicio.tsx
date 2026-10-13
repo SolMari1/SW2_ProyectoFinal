@@ -1,7 +1,7 @@
 // src/pages/inicio.tsx
 // Página principal del Catálogo de Ropa Unisex (Camisas, Pantalones y Buzos en tallas S, M, L, XL)
-// Sin calificaciones, sin descuentos ni etiquetas promocionales
 import { useState, useMemo, type FC } from 'react';
+import { Link } from 'react-router-dom';
 import type { Product, CategoriaRopa } from '../types/product';
 import { MOCK_PRODUCTS } from '../data/mockProducts';
 import { useAuth } from '../hooks/useAuth';
@@ -105,7 +105,10 @@ export const Inicio: FC = () => {
         <div className="banner-modo-admin-aviso">
           <span>
             <strong>Sesión de Administrador activa:</strong> Estás visualizando el catálogo en
-            modo lectura. No puedes agregar al carrito ni realizar compras.
+            modo lectura. No puedes agregar al carrito ni realizar compras.{' '}
+            <Link to="/admin/informes" style={{ textDecoration: 'underline', fontWeight: 'bold', marginLeft: '0.5rem', color: 'inherit' }}>
+              Ver Informes Consolidados →
+            </Link>
           </span>
         </div>
       )}
@@ -113,11 +116,10 @@ export const Inicio: FC = () => {
       {/* Cabecera / Banner informativo de la tienda de ropa */}
       <section className="banner-catalogo">
         <div className="banner-catalogo__contenedor">
-          <span className="banner-catalogo__etiqueta">Colección Unisex • Dropshipping</span>
           <h1 className="banner-catalogo__titulo">Catálogo de Ropa</h1>
           <p className="banner-catalogo__descripcion">
-            Prendas atemporales sin distinción de género. Encuentra camisas, pantalones y buzos
-            en tallas S, M, L y XL con despacho directo desde los fabricantes.
+            Prendas sin distinción de género. Encuentra camisas, pantalones y buzos
+            de excelente calidad y con despacho directo desde los fabricantes.
           </p>
         </div>
       </section>
@@ -192,7 +194,7 @@ export const Inicio: FC = () => {
           )}
         </div>
 
-        {/* Grilla de prendas o mensaje si no hay resultados */}
+        {/* negrilla de prendas o mensaje si no hay resultados */}
         {productosFiltrados.length === 0 ? (
           <div className="estado-vacio">
             <h3>No se encontraron prendas</h3>
@@ -214,12 +216,15 @@ export const Inicio: FC = () => {
         )}
       </main>
 
-      {/* Pie de página con información general (sin logos) */}
+      {/* Pie de página con información general */}
       <footer className="pie-pagina-catalogo">
         <div className="pie-pagina-catalogo__contenedor">
-          <p className="pie-pagina-catalogo__marca">Tienda de Ropa Unisex - Dropshipping SW2</p>
+          <p className="pie-pagina-catalogo__marca">Tienda de Ropa Unisex SW2</p>
           <p className="pie-pagina-catalogo__derechos">
-            Camisas, pantalones y buzos en tallas S, M, L y XL. Despacho directo sin intermediarios.
+            Camisas, pantalones y buzos en tallas S, M, L y XL al estilo Dropshipping.
+          </p>
+          <p className="pie-pagina-catalogo__derechos">
+            Soporte con: Nicolas Cardenas - Miguel David - Marisol Osma - Cristhian Lizcano
           </p>
         </div>
       </footer>

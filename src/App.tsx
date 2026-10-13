@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { OrderProvider } from './context/OrderContext';
 import { CartProvider } from './context/CartContext';
+import './styles/catalogo.css';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Inicio from './pages/inicio';
