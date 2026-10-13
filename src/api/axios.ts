@@ -1,5 +1,6 @@
+//peticiones HTTP
 import axios from 'axios';
-
+// Api para el backend
 const api = axios.create({
   baseURL: 'http://localhost:4000/api',
 });

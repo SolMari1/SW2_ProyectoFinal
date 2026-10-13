@@ -37,32 +37,37 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2>Registro</h2>
-      {error && <div className="error">{error}</div>}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Nombre</label>
-          <input type="text" {...register('name')} />
-          {errors.name && <span>{errors.name.message}</span>}
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" {...register('email')} />
-          {errors.email && <span>{errors.email.message}</span>}
-        </div>
-        <div>
-          <label>Contraseña</label>
-          <input type="password" {...register('password')} />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Cargando...' : 'Registrar'}
-        </button>
-      </form>
-      <p>
-        ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
-      </p>
+    <div className="auth-wrapper">
+      <div className="register-container">
+        <h2>Registro</h2>
+        {error && <div className="error">{error}</div>}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <label>Nombre</label>
+            <input type="text" {...register('name')} />
+            {errors.name && <span>{errors.name.message}</span>}
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" {...register('email')} />
+            {errors.email && <span>{errors.email.message}</span>}
+          </div>
+          <div>
+            <label>Contraseña</label>
+            <input type="password" {...register('password')} />
+            {errors.password && <span>{errors.password.message}</span>}
+          </div>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Cargando...' : 'Registrar'}
+          </button>
+        </form>
+        <p>
+          ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
+        </p>
+        <p>
+          <Link to="/">Ir al Catálogo</Link>
+        </p>
+      </div>
     </div>
   );
 };
