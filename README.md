@@ -24,24 +24,32 @@ Frontend de la aplicación, construido con React + TypeScript + Vite.
    cd sw2ProyectoFinal
 
 2. Instalar dependencias:
-npm install
+    ```bash
+   npm install
 3. Correr en modo desarrollo:
-npm run dev
+   ```bash
+   npm run dev
 
-##cada vez que se vaya a trabajar
+## cada vez que se vaya a trabajar
 
-4.Traer lo último de main
-git checkout main
-git pull origin main
+4. Traer lo último de main
+   ```bash
+   git checkout main
+   git pull origin main
+
 5. Agregar los archivos
-git add .
-6. Hacer el commit (con mensaje descriptivo)
-git commit -m "agrego tal cosa"
-7.Subir a GitHub
-git push origin 
+   ```bash
+   git add .
 
+7. Hacer el commit (con mensaje descriptivo)
+   ```bash
+   git commit -m "agrego tal cosa"
 
-##Estructura del proyecto
+8. Subir a GitHub
+   ```bash
+   git push origin 
+
+## Estructura del proyecto
 
 src/
 ├── api/          # Configuración de axios y llamadas HTTP
