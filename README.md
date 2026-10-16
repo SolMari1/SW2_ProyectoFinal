@@ -27,7 +27,9 @@ Frontend de la aplicación, construido con React + TypeScript + Vite.
 npm install
 3. Correr en modo desarrollo:
 npm run dev
+
 ##cada vez que se vaya a trabajar
+
 4.Traer lo último de main
 git checkout main
 git pull origin main
