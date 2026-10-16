@@ -27,6 +27,16 @@ Frontend de la aplicación, construido con React + TypeScript + Vite.
 npm install
 3. Correr en modo desarrollo:
 npm run dev
+#cada vez que se vaya a trabajar
+4.Traer lo último de main
+git checkout main
+git pull origin main
+5. Agregar los archivos
+git add .
+6. Hacer el commit (con mensaje descriptivo)
+git commit -m "agrego tal cosa"
+7.Subir a GitHub
+git push origin 
 
 
 ##Estructura del proyecto
