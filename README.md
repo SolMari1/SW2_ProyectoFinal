@@ -3,6 +3,7 @@
 # Diagrama de arquitectura
 
 <img width="1282" height="1312" alt="Aquitectura_Software" src="https://github.com/user-attachments/assets/4f200d18-5727-44c0-bc9b-43e7475f2e08" />
+
 # Frontend 
 Frontend de la aplicación, construido con React + TypeScript + Vite.
 
