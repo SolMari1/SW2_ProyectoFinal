@@ -60,22 +60,6 @@ Si ya tienes otro servicio en el puerto 5432 o 5173, copia `.env.example` a `.en
 | `docker compose logs -f backend` | Ver logs del backend |
 | `docker compose exec backend npm run prisma:seed` | Volver a cargar la seed |
 
-### Opción 2: Local sin Docker
-
-```bash
-# Backend
-cd backend
-cp .env.example .env          # ajustar DATABASE_URL a tu PostgreSQL
-npm install
-npx prisma migrate deploy     # crear tablas
-npm run prisma:seed           # cargar datos de prueba
-npm run start:dev             # http://localhost:4000/api
-
-# Frontend (otra terminal)
-cd frontend
-npm install
-npm run dev                   # http://localhost:5173
-```
 
 ## Cada vez que se vaya a trabajar (Flujo Git)
 
