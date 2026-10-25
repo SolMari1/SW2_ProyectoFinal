@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+
+enum Rol {
+  cliente
+  admin
+}
+
+enum Categoria {
+  Camisas
+  Pantalones
+  Buzos
+}
+
+enum Talla {
+  S
+  M
+  L
+  XL
+}
+
+enum EstadoPedido {
+  PENDIENTE
+  EN_PROCESO
+  ENVIADO
+  COMPLETADO
+}
+
+// ─── Modelos ──────────────────────────────────────────────────────────────────
+
+/// Clientes y administradores de la tienda.
+model Usuario {
+  id           Int      @id @default(autoincrement())
+  nombre       String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  rol          Rol      @default(cliente)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  pedidos Pedido[]
+
+  @@map("usuarios")
+}
+
+/// Prendas del catálogo. `imagen` es una URL o el nombre de un archivo en frontend/src/assets/productos.
+model Producto {
+  id                    Int       @id @default(autoincrement())
+  nombre                String
+  descripcion           String
+  precio                Int
+  categoria             Categoria
+  tallas                Talla[]
+  imagen                String
+  tiempoEntregaEstimado String?   @map("tiempo_entrega_estimado")
+  activo                Boolean   @default(true)
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+
+  detalles DetallePedido[]
+
+  @@map("productos")
+}
+
+model Pedido {
+  id        Int          @id @default(autoincrement())
+  clienteId Int          @map("cliente_id")
+  fecha     DateTime     @default(now())
+  total     Int
+  estado    EstadoPedido @default(EN_PROCESO)
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @updatedAt @map("updated_at")
+
+  cliente Usuario         @relation(fields: [clienteId], references: [id], onDelete: Restrict)
+  items   DetallePedido[]
+
+  @@index([clienteId])
+  @@index([fecha])
+  @@map("pedidos")
+}
+
+/// Línea de un pedido. Guarda el precio del momento de la compra.
+model DetallePedido {
+  id             Int   @id @default(autoincrement())
+  pedidoId       Int   @map("pedido_id")
+  productoId     Int   @map("producto_id")
+  talla          Talla
+  cantidad       Int
+  precioUnitario Int   @map("precio_unitario")
+  subtotal       Int
+
+  pedido   Pedido   @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  producto Producto @relation(fields: [productoId], references: [id], onDelete: Restrict)
+
+  @@index([pedidoId])
+  @@index([productoId])
+  @@map("detalle_pedido")
+}

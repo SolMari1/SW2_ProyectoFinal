@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+
+# Prisma Client generado (se regenera con `npx prisma generate`)
+backend/src/generated
 
 # Editor directories and files
 .vscode/*
@@ -27,3 +31,4 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+!.env.example
