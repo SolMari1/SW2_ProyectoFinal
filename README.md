@@ -1,7 +1,6 @@
 # Proyecto Final SW2
 
-Tienda de ropa unisex (camisas, pantalones y buzos en tallas S, M, L y XL) con catálogo, carrito,
-pedidos e informes para el administrador.
+Tienda de ropa unisex (camisas, pantalones y buzos en tallas S, M, L y XL) con catálogo, carrito, pedidos e informes para el administrador.
 
 # Diagrama de arquitectura
 
@@ -78,6 +77,29 @@ npm install
 npm run dev                   # http://localhost:5173
 ```
 
+## Cada vez que se vaya a trabajar (Flujo Git)
+
+1. Traer lo último de main:
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+
+2. Agregar los archivos modificados:
+   ```bash
+   git add .
+   ```
+
+3. Hacer el commit:
+   ```bash
+   git commit -m "descripción del cambio"
+   ```
+
+4. Subir a GitHub:
+   ```bash
+   git push origin main
+   ```
+
 ## Usuarios de prueba (seed)
 
 | Rol | Email | Contraseña |
@@ -139,23 +161,3 @@ El backend calcula precios y totales con el catálogo; nunca confía en el preci
 cd backend && npm test     # Jest
 cd frontend && npm test    # Vitest
 ```
-
-## Cada vez que se vaya a trabajar
-
-1. Traer lo último de main
-   ```bash
-   git checkout main
-   git pull origin main
-   ```
-2. Agregar los archivos
-   ```bash
-   git add .
-   ```
-3. Hacer el commit (con mensaje descriptivo)
-   ```bash
-   git commit -m "agrego tal cosa"
-   ```
-4. Subir a GitHub
-   ```bash
-   git push origin
-   ```
