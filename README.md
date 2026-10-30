@@ -3,7 +3,7 @@
 Tienda de ropa unisex (camisas, pantalones y buzos en tallas S, M, L y XL) con catálogo, carrito, pedidos e informes para el administrador.
 
 # Diagrama de arquitectura
-
+![Diagrama de Arquitectura](./Aquitectura_Software_1.png)
 
 
 ## Estructura del monorepo
